@@ -11,41 +11,80 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/3.0.20/autosize.min.js"
+      integrity="sha512-EAEoidLzhKrfVg7qX8xZFEAebhmBMsXrIcI0h7VPx2CyAyFHuDvOAUs9CEATB2Ou2/kuWEDtluEVrQcjXBy9yw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="module">
+      import {
+        Application,
+        Controller,
+      } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js";
+      window.Stimulus = Application.start();
+
+      Stimulus.register(
+        "demo",
+        class extends Controller {
+          static targets = ["input", "output"];
+
+          initialize() {
+            this.inputTarget.value = `The quick brown fox jumps over the lazy dog โพลารอยด์สติ๊กเกอร์เซ่นไหว้เบอร์เกอร์ สหัสวรรษโต๊ะจีนแชมเปี้ยนน็อคโจ๋`;
+          }
+
+          connect() {
+            this.update();
+            autosize(document.querySelector("textarea"));
+          }
+
+          update() {
+            this.outputTargets.forEach((element) => {
+              element.textContent = this.inputTarget.value;
+            });
+          }
+        }
+      );
+    </script>
   </head>
-  <body class="p-8">
+  <body class="p-8" data-controller="demo">
     <h1 class="text-4xl font-bold mb-4">CMU Font</h1>
 
-    <h2 class="text-2xl font-bold mb-2">Disclaimer</h2>
-    <p class="mb-4">
-      I am not the owner of the font, which belongs to Chiang Mai University.
-      This page intents to provide a quick access to the font.
-    </p>
-
-    <h2 class="text-2xl font-bold mb-2">Font Preview</h2>
+    <textarea
+      class="textarea w-full font-mono text-[20px] mb-4"
+      name="sample"
+      id="sample"
+      data-demo-target="input"
+      data-action="input->demo#update"
+    ></textarea>
 
     <p class="font-light mb-2">
-      Light: The quick brown fox jumps over the lazy dog
-      โพลารอยด์สติ๊กเกอร์เซ่นไหว้เบอร์เกอร์ สหัสวรรษโต๊ะจีนแชมเปี้ยนน็อคโจ๋
+      Light: <span data-demo-target="output"></span>
     </p>
     <p class="font-light italic mb-2">
-      Light Italic: The quick brown fox jumps over the lazy dog
-      โพลารอยด์สติ๊กเกอร์เซ่นไหว้เบอร์เกอร์ สหัสวรรษโต๊ะจีนแชมเปี้ยนน็อคโจ๋
+      Light Italic:
+      <span data-demo-target="output"></span>
     </p>
-    <p class="mb-2">
-      Regular: The quick brown fox jumps over the lazy dog
-      โพลารอยด์สติ๊กเกอร์เซ่นไหว้เบอร์เกอร์ สหัสวรรษโต๊ะจีนแชมเปี้ยนน็อคโจ๋
-    </p>
-    <p class="italic mb-2">
-      Italic: The quick brown fox jumps over the lazy dog
-      โพลารอยด์สติ๊กเกอร์เซ่นไหว้เบอร์เกอร์ สหัสวรรษโต๊ะจีนแชมเปี้ยนน็อคโจ๋
-    </p>
-    <p class="font-bold mb-2">
-      Bold: The quick brown fox jumps over the lazy dog
-      โพลารอยด์สติ๊กเกอร์เซ่นไหว้เบอร์เกอร์ สหัสวรรษโต๊ะจีนแชมเปี้ยนน็อคโจ๋
-    </p>
+    <p class="mb-2">Regular: <span data-demo-target="output"></span></p>
+    <p class="italic mb-2">Italic: <span data-demo-target="output"></span></p>
+    <p class="font-bold mb-2">Bold: <span data-demo-target="output"></span></p>
     <p class="font-bold italic mb-2">
-      Bold Italic: The quick brown fox jumps over the lazy dog
-      โพลารอยด์สติ๊กเกอร์เซ่นไหว้เบอร์เกอร์ สหัสวรรษโต๊ะจีนแชมเปี้ยนน็อคโจ๋
+      Bold Italic:
+      <span data-demo-target="output"></span>
+    </p>
+
+    <h2 class="text-2xl font-bold mt-4">Download</h2>
+
+    <a
+      class="link link-primary wrap-anywhere font-light"
+      href="https://www.cmu.ac.th/th/article/876c980c-7ce6-44ae-b47b-4a3b9ebf72d0"
+      >https://www.cmu.ac.th/th/article/876c980c-7ce6-44ae-b47b-4a3b9ebf72d0</a
+    >
+
+    <h2 class="text-2xl font-bold mt-4">Disclaimer</h2>
+    <p class="mb-4 font-light">
+      I am not the owner of the font, which belongs to Chiang Mai University.
+      This page intents to provide a quick access to the font.
     </p>
   </body>
 </html>

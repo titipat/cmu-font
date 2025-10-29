@@ -51,30 +51,57 @@
     <div class="container mx-auto w-full sm:w-xl">
       <h1 class="text-4xl font-bold mb-4">CMU Font</h1>
 
+      <label class="label font-light text-sm mb-2">Input</label>
       <textarea
         class="textarea w-full font-mono text-[20px] mb-4"
         name="sample"
         id="sample"
         data-demo-target="input"
         data-action="input->demo#update"
+        placeholder="Type your text here"
       ></textarea>
 
-      <p class="font-light mb-2">
-        Light: <span data-demo-target="output"></span>
-      </p>
-      <p class="font-light italic mb-2">
-        Light Italic:
-        <span data-demo-target="output"></span>
-      </p>
-      <p class="mb-2">Regular: <span data-demo-target="output"></span></p>
-      <p class="italic mb-2">Italic: <span data-demo-target="output"></span></p>
-      <p class="font-bold mb-2">
-        Bold: <span data-demo-target="output"></span>
-      </p>
-      <p class="font-bold italic mb-2">
-        Bold Italic:
-        <span data-demo-target="output"></span>
-      </p>
+      <div class="card shadow">
+        <div class="font-light mb-2 card-body text-xl">
+          <div class="card-title font-light">Light</div>
+          <div data-demo-target="output"></div>
+        </div>
+      </div>
+
+      <div class="card shadow mt-4">
+        <div class="font-light italic mb-2 card-body text-xl">
+          <div class="card-title font-light italic">Light Italic</div>
+          <div class="italic font-light" data-demo-target="output"></div>
+        </div>
+      </div>
+
+      <div class="card shadow mt-4">
+        <div class="mb-2 card-body text-xl">
+          <div class="card-title">Regular</div>
+          <div data-demo-target="output"></div>
+        </div>
+      </div>
+
+      <div class="card shadow mt-4">
+        <div class="italic mb-2 card-body text-xl">
+          <div class="card-title italic">Regular Italic</div>
+          <div class="italic" data-demo-target="output"></div>
+        </div>
+      </div>
+
+      <div class="card shadow mt-4">
+        <div class="font-bold mb-2 card-body text-xl">
+          <div class="card-title font-bold">Bold</div>
+          <div class="font-bold" data-demo-target="output"></div>
+        </div>
+      </div>
+
+      <div class="card shadow mt-4">
+        <div class="font-bold italic mb-2 card-body text-xl">
+          <div class="card-title font-bold italic">Bold Italic</div>
+          <div class="font-bold italic" data-demo-target="output"></div>
+        </div>
+      </div>
 
       <h2 class="text-2xl font-bold mt-4">Download</h2>
 
